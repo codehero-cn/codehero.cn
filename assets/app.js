@@ -1,6 +1,6 @@
 (function ($, undefined) {
 
-    var orgName = 'h5bp';
+    var orgName = 'codehero-cn';
 
     // Return the repo url
     function getRepoUrl(repo) {
@@ -36,7 +36,7 @@
         $item.appendTo('#repos');
     }
 
-    $.getJSON('https://api.github.com/orgs/' + orgName + '/repos?callback=?', function (result) {
+    $.getJSON('https://api.github.com/users/' + orgName + '/repos?callback=?', function (result) {
         var repos = result.data;
         $(function () {
             $('#num-repos').text(repos.length);
@@ -80,14 +80,14 @@
             });
         });
     });
-
-    $.getJSON('https://api.github.com/orgs/' + orgName + '/members?per_page=100&callback=?', function (result) {
+/* - - - - - eleven
+    $.getJSON('https://api.github.com/users/' + orgName + '/members?per_page=100&callback=?', function (result) {
         var members = result.data;
         $(function () {
             $('#num-members').text(members.length);
         });
     });
-
+- - - - - - - - */
     // Relative times
     function prettyDate(rawdate) {
         var date, seconds, formats, i = 0, f;
@@ -112,7 +112,6 @@
         }
         return 'A while ago';
     }
-    
     // Wraps prettyDate in an HTML5 <time> element
     function html5prettyDate(rawdate) {
         return '<time datetime="' + rawdate.toISOString() + '">' + prettyDate(rawdate) + '</time>';
